@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.container section {
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: black;
+}
+
+.header h1 {
+  font-size: calc(12px + 6vw);
+  margin-left: calc(-60px + 22vw);
+  color: white;
+}
+
+.arrow {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(12px + 2vw);
+  margin-top: 60px;
+  animation: fadeIn 4000ms;
+  animation-delay: 10000ms;
+  animation-fill-mode: forwards;
+}
+
+.arrow a {
+  text-decoration: none;
+  color: white;
+  animation: bounce 1s infinite;
+  animation-direction: alternate;
+}
+
+.description {
+  color: white;
+  opacity: 0;
+  animation: fadeIn 1ms;
+  animation-delay: 2500ms;
+  animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(12px + 3vw);
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0px, -20px);
+  }
+}
+
+.projects {
+  flex: 1 100%;
+}
