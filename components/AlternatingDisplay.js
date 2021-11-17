@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/alternatingDisplay.module.css';
 
 export default function AlternatingDisplay(props) {
-  const [activeText, setActiveText] = useState(props.text[0]);
+  const [activeText, setActiveText] = useState('');
   const [index, setIndex] = useState(0);
 
   function sleep(ms) {

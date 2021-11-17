@@ -4,14 +4,21 @@ import ProjectCard from '../components/ProjectCard';
 import styles from '../styles/home.module.css';
 import Typewriter from '../components/TypeWriter';
 import AlternatingDisplay from '../components/AlternatingDisplay';
+import Scene from '../components/Scene';
+import { useRef } from 'react';
 
 export default function Home({ projects }) {
+  const mainRef = useRef(null);
+  const scrollToMain = () =>
+    mainRef.current.scrollIntoView({ behavior: 'smooth' });
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Ryan Whittingham</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Scene />
       <section id="1">
         <header className={styles.header}>
           <h1>
@@ -22,12 +29,13 @@ export default function Home({ projects }) {
               text={['Dad', 'Web Developer', 'Designer', 'Maker']}
             />
           </h2>
+
           <div className={styles.arrow}>
-            <a href="#2">▼</a>
+            <button onClick={scrollToMain}>▼</button>
           </div>
         </header>
       </section>
-      <section id="2">
+      <section ref={mainRef}>
         <main>
           <section className={styles.projects}>
             <p>Projects</p>

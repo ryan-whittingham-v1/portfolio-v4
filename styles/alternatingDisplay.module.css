@@ -1,7 +1,4 @@
 .display {
-  opacity: 0;
-  animation: fadeInOut 2.511s;
-  animation-iteration-count: infinite;
 }
 
 @keyframes fadeInOut {

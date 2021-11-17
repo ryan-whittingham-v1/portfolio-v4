@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 
 .container section {
@@ -14,13 +12,11 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: black;
 }
 
 .header h1 {
   font-size: calc(12px + 6vw);
   margin-left: calc(-60px + 22vw);
-  color: white;
 }
 
 .arrow {
@@ -35,24 +31,30 @@
   animation-fill-mode: forwards;
 }
 
-.arrow a {
-  text-decoration: none;
-  color: white;
+.arrow button {
+  z-index: 2;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
   animation: bounce 1s infinite;
   animation-direction: alternate;
 }
 
 .description {
-  color: white;
   opacity: 0;
   animation: fadeIn 1ms;
-  animation-delay: 2500ms;
+  animation-delay: 2900ms;
   animation-fill-mode: forwards;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: calc(12px + 3vw);
   margin: 0;
+  z-index: -1;
 }
 
 @keyframes fadeIn {
