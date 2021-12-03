@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  z-index: 10;
 }
 
 .container section {
@@ -12,11 +12,14 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  margin: 0;
 }
 
 .header h1 {
-  font-size: calc(12px + 6vw);
-  margin-left: calc(-60px + 22vw);
+  font-size: calc(25px + 5vw);
+  margin-top: 0px;
+  margin-left: 20px;
+  z-index: 10;
 }
 
 .arrow {
@@ -25,7 +28,7 @@
   flex-direction: column;
   align-items: center;
   font-size: calc(12px + 2vw);
-  margin-top: 60px;
+  margin-top: 50vh;
   animation: fadeIn 4000ms;
   animation-delay: 10000ms;
   animation-fill-mode: forwards;
@@ -53,8 +56,8 @@
   flex-direction: column;
   align-items: center;
   font-size: calc(12px + 3vw);
-  margin: 0;
   z-index: -1;
+  margin-top: 20px;
 }
 
 @keyframes fadeIn {

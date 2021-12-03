@@ -25,8 +25,8 @@ class Scene extends React.Component {
     var engine = Engine.create(),
       world = engine.world;
 
-    const cw = document.body.clientWidth;
-    const ch = document.body.clientHeight;
+    const cw = window.innerWidth;
+    const ch = window.innerHeight;
 
     var render = Render.create({
       element: this.sceneRef.current,
@@ -46,6 +46,7 @@ class Scene extends React.Component {
     var runner = Runner.create();
     Runner.run(runner, engine);
 
+    // add balls
     var rows = 18,
       yy = 600 - 25 - 40 * rows;
 
@@ -53,7 +54,7 @@ class Scene extends React.Component {
       return Bodies.rectangle(x, y, 40, 40, {
         mass: 0.5,
         restitution: 0.9,
-        frictionAir: 0.1,
+        frictionAir: 0.3,
         render: {
           fillStyle: '#000000',
         },
@@ -100,10 +101,6 @@ class Scene extends React.Component {
 
     // keep the mouse in sync with rendering
     render.mouse = mouse;
-
-    /* Matter.Events.on(mouseConstraint, 'mousedown', function (event) {
-      World.add(engine.world, Bodies.circle(150, 50, 30, { restitution: 0.7 }));
-    }); */
 
     Runner.run(engine);
   }

@@ -3,4 +3,10 @@
   top: 0px;
   left: 0px;
   height: 100vh;
+  z-index: 11;
+}
+
+.scoreboard {
+  position: absolute;
+  right: 20px;
 }
