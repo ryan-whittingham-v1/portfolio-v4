@@ -3,10 +3,13 @@
   top: 0px;
   left: 0px;
   height: 100vh;
-  z-index: 11;
+  z-index: 1;
 }
 
 .scoreboard {
   position: absolute;
-  right: 20px;
+  right: 40px;
+  bottom: 15px;
+
+  font-size: calc(8px + 4vw);
 }

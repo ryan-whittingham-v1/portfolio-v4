@@ -36,13 +36,6 @@ function debounce(fn, ms) {
 function SceneFour() {
   const scene = useRef();
 
-  // create engine
-  var engine = Engine.create(),
-    world = engine.world;
-
-  // create runner
-  var runner = Runner.create();
-
   const [dimensions, setDimensions] = useState({
     height: 0,
     width: 0,
@@ -51,10 +44,22 @@ function SceneFour() {
   const [userScore, setUserScore] = useState(0);
   const [cpuScore, setCpuScore] = useState(0);
 
+  // create matter.js engine
+  let engine = Engine.create(),
+    world = engine.world;
+
+  // create matter.js runner
+  let runner = Runner.create();
+
   useEffect(() => {
     const cw = document.body.clientWidth;
     const ch = window.innerHeight;
-
+    const puckSize = 20 + cw * 0.04;
+    const puckMass = 2 + cw * 0.02;
+    const paddleSize = 20 + cw * 0.05;
+    const paddleMass = 20 + cw * 0.04;
+    const cpuSpeed = -0.00002 * cw;
+    const wallThickness = 20;
     // create renderer
     var render = Render.create({
       element: scene.current,
@@ -69,9 +74,7 @@ function SceneFour() {
     Render.run(render);
 
     // floor
-    let floor = Bodies.rectangle(cw / 2, ch, cw, 20, {
-      mass: 100,
-      density: 100,
+    let floor = Bodies.rectangle(cw / 2, ch, cw + 50, wallThickness, {
       isStatic: true,
       render: {
         fillStyle: 'black',
@@ -79,9 +82,7 @@ function SceneFour() {
     });
 
     // ceiling
-    let ceiling = Bodies.rectangle(cw / 2, 0, cw, 20, {
-      mass: 100,
-      density: 100,
+    let ceiling = Bodies.rectangle(cw / 2, 0, cw + 50, wallThickness, {
       isStatic: true,
       render: {
         fillStyle: 'black',
@@ -89,29 +90,35 @@ function SceneFour() {
     });
 
     // rightwallTop
-    let rightWallTop = Bodies.rectangle(cw, ch * 0.167, 20, ch * 0.3, {
-      mass: 100,
-      density: 100,
-      isStatic: true,
-      render: {
-        fillStyle: 'black',
-      },
-    });
+    let rightWallTop = Bodies.rectangle(
+      cw,
+      ch * 0.15,
+      wallThickness,
+      ch * 0.3,
+      {
+        isStatic: true,
+        render: {
+          fillStyle: 'black',
+        },
+      }
+    );
 
     // rightWallBottom
-    let rightWallBottom = Bodies.rectangle(cw, ch * 0.833, 20, ch * 0.3, {
-      mass: 100,
-      density: 100,
-      isStatic: true,
-      render: {
-        fillStyle: 'black',
-      },
-    });
+    let rightWallBottom = Bodies.rectangle(
+      cw,
+      ch * 0.85,
+      wallThickness,
+      ch * 0.3,
+      {
+        isStatic: true,
+        render: {
+          fillStyle: 'black',
+        },
+      }
+    );
 
     // leftWallTop
-    let leftWallTop = Bodies.rectangle(0, ch * 0.167, 20, ch * 0.3, {
-      mass: 100,
-      density: 100,
+    let leftWallTop = Bodies.rectangle(0, ch * 0.15, wallThickness, ch * 0.3, {
       isStatic: true,
       render: {
         fillStyle: 'black',
@@ -119,25 +126,80 @@ function SceneFour() {
     });
 
     // leftWallBottom
-    let leftWallBottom = Bodies.rectangle(0, ch * 0.833, 20, ch * 0.3, {
-      mass: 100,
-      density: 100,
-      isStatic: true,
-      render: {
-        fillStyle: 'black',
-      },
-    });
+    let leftWallBottom = Bodies.rectangle(
+      0,
+      ch * 0.85,
+      wallThickness,
+      ch * 0.3,
+      {
+        isStatic: true,
+        render: {
+          fillStyle: 'black',
+        },
+      }
+    );
     //----------------------------------------Vert Boundaries
-    // floor
-    let vertFloorLeft = Bodies.rectangle(cw * 0.2, ch, cw * 0.37, 20, {
-      mass: 100,
-      density: 100,
-      isStatic: true,
-      render: {
-        fillStyle: 'black',
-      },
-    });
-    let vertFloorRight = Bodies.rectangle(cw * 0.8, ch, cw * 0.37, 20, {
+
+    let vertFloorLeft = Bodies.rectangle(
+      cw * 0.15,
+      ch,
+      cw * 0.3,
+      wallThickness,
+      {
+        mass: 100,
+        density: 100,
+        isStatic: true,
+        render: {
+          fillStyle: 'black',
+        },
+      }
+    );
+    let vertFloorRight = Bodies.rectangle(
+      cw * 0.85,
+      ch,
+      cw * 0.3,
+      wallThickness,
+      {
+        mass: 100,
+        density: 100,
+        isStatic: true,
+        render: {
+          fillStyle: 'black',
+        },
+      }
+    );
+
+    let vertCeilingLeft = Bodies.rectangle(
+      cw * 0.15,
+      0,
+      cw * 0.3,
+      wallThickness,
+      {
+        mass: 100,
+        density: 100,
+        isStatic: true,
+        render: {
+          fillStyle: 'black',
+        },
+      }
+    );
+
+    let vertCeilingRight = Bodies.rectangle(
+      cw * 0.85,
+      0,
+      cw * 0.3,
+      wallThickness,
+      {
+        mass: 100,
+        density: 100,
+        isStatic: true,
+        render: {
+          fillStyle: 'black',
+        },
+      }
+    );
+
+    let vertRightWall = Bodies.rectangle(cw, ch / 2, wallThickness, ch, {
       mass: 100,
       density: 100,
       isStatic: true,
@@ -146,37 +208,7 @@ function SceneFour() {
       },
     });
 
-    // ceiling
-    let vertCeilingLeft = Bodies.rectangle(cw * 0.2, 0, cw * 0.37, 20, {
-      mass: 100,
-      density: 100,
-      isStatic: true,
-      render: {
-        fillStyle: 'black',
-      },
-    });
-
-    let vertCeilingRight = Bodies.rectangle(cw * 0.8, 0, cw * 0.37, 20, {
-      mass: 100,
-      density: 100,
-      isStatic: true,
-      render: {
-        fillStyle: 'black',
-      },
-    });
-
-    // rightwallTop
-    let vertRightWall = Bodies.rectangle(cw, ch / 2, 20, ch, {
-      mass: 100,
-      density: 100,
-      isStatic: true,
-      render: {
-        fillStyle: 'black',
-      },
-    });
-
-    // leftWall
-    let vertLeftWall = Bodies.rectangle(0, ch * 0.5, 20, ch, {
+    let vertLeftWall = Bodies.rectangle(0, ch * 0.5, wallThickness, ch, {
       mass: 100,
       density: 100,
       isStatic: true,
@@ -186,65 +218,33 @@ function SceneFour() {
     });
 
     // puck
-    let puck = Bodies.circle(cw / 2, ch / 2, cw * 0.05, {
+    let puck = Bodies.circle(cw / 2, ch / 2, puckSize, {
       render: {
         fillStyle: 'blue',
       },
-      frictionAir: 0.01,
+      frictionAir: 0.001,
       restitution: 1,
+      mass: puckMass,
     });
-    Composite.add(world, puck);
-
-    // puck trail
-    /*  var trail = [];
-
-    Events.on(render, 'afterRender', function () {
-      trail.unshift({
-        position: Vector.clone(puck.position),
-        speed: puck.speed,
-      });
-
-      Render.startViewTransform(render);
-      render.context.globalAlpha = 0.5;
-
-      for (var i = 0; i < trail.length; i += 1) {
-        var point = trail[i].position;
-
-        render.context.fillStyle = 'blue';
-        render.context.fillRect(point.x, point.y, 5, 5);
-      }
-
-      render.context.globalAlpha = 1;
-      Render.endViewTransform(render);
-
-      if (trail.length > 50) {
-        trail.pop();
-      }
-    }); */
 
     //userPaddle
-    var userPaddle = Bodies.circle(cw * 0.15, ch * 0.5, cw * 0.06, {
+    var userPaddle = Bodies.circle(cw * 0.15, ch * 0.5, paddleSize, {
       render: { fillStyle: 'black' },
+      restitution: 0,
+      mass: paddleMass,
     });
 
     //cpuPaddle
-    var cpuPaddle = Bodies.circle(cw * 0.85, ch * 0.5, cw * 0.06, {
+    var cpuPaddle = Bodies.circle(cw * 0.85, ch * 0.5, paddleSize, {
       render: { fillStyle: 'black' },
+      mass: paddleMass,
     });
 
-    //---------------------- vert paddles
-
-    //userPaddle
-    var vertUserPaddle = Bodies.circle(cw * 0.5, ch * 0.85, cw * 0.06, {
-      render: { fillStyle: 'black' },
-    });
-
-    //cpuPaddle
-    var vertCpuPaddle = Bodies.circle(cw * 0.5, ch * 0.15, cw * 0.06, {
-      render: { fillStyle: 'black' },
-    });
+    Composite.add(world, [puck, cpuPaddle, userPaddle]);
 
     if (cw < ch) {
+      Body.setPosition(userPaddle, { x: cw * 0.5, y: ch * 0.85 });
+      Body.setPosition(cpuPaddle, { x: cw * 0.5, y: ch * 0.15 });
       Composite.add(world, [
         vertCeilingLeft,
         vertCeilingRight,
@@ -252,8 +252,6 @@ function SceneFour() {
         vertFloorRight,
         vertLeftWall,
         vertRightWall,
-        vertCpuPaddle,
-        vertUserPaddle,
       ]);
     } else {
       Composite.add(world, [
@@ -263,42 +261,20 @@ function SceneFour() {
         leftWallBottom,
         rightWallTop,
         rightWallBottom,
-        cpuPaddle,
-        userPaddle,
       ]);
     }
 
-    // add gyro control
-    if (typeof window !== 'undefined') {
-      var updateGravity = function (event) {
-        var orientation =
-            typeof window.orientation !== 'undefined' ? window.orientation : 0,
-          gravity = engine.gravity;
-
-        if (orientation === 0) {
-          gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
-          gravity.y = Common.clamp(event.beta, -90, 90) / 90;
-        } else if (orientation === 180) {
-          gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
-          gravity.y = Common.clamp(-event.beta, -90, 90) / 90;
-        } else if (orientation === 90) {
-          gravity.x = Common.clamp(event.beta, -90, 90) / 90;
-          gravity.y = Common.clamp(-event.gamma, -90, 90) / 90;
-        } else if (orientation === -90) {
-          gravity.x = Common.clamp(-event.beta, -90, 90) / 90;
-          gravity.y = Common.clamp(event.gamma, -90, 90) / 90;
-        }
-      };
-
-      window.addEventListener('deviceorientation', updateGravity);
-    }
+    let gravity = engine.gravity;
+    gravity.y = 0;
+    gravity.x = 0;
 
     // add mouse control
     var mouse = Mouse.create(render.canvas),
       mouseConstraint = MouseConstraint.create(engine, {
         mouse: mouse,
         constraint: {
-          stiffness: 1,
+          stiffness: 0.1,
+          damping: 1.6,
           render: {
             visible: false,
           },
@@ -336,32 +312,14 @@ function SceneFour() {
       }
     });
 
-    let interval;
-    if (cw > ch) {
-      // cpuPaddle movement
-      interval = setInterval(() => {
-        Body.applyForce(cpuPaddle, cpuPaddle.position, {
-          x: (cpuPaddle.position.x - puck.position.x) * -0.000000004 * cw * cw,
-          y: (cpuPaddle.position.y - puck.position.y) * -0.000000004 * cw * cw,
-        });
-      }, 1000);
-    } else {
-      // cpuPaddle vert movement
-      interval = setInterval(() => {
-        Body.applyForce(vertCpuPaddle, vertCpuPaddle.position, {
-          x:
-            (vertCpuPaddle.position.x - puck.position.x) *
-            -0.000000004 *
-            cw *
-            cw,
-          y:
-            (vertCpuPaddle.position.y - puck.position.y) *
-            -0.000000004 *
-            cw *
-            cw,
-        });
-      }, 1000);
-    }
+    // cpuPaddle movement
+    let interval = setInterval(() => {
+      Body.applyForce(cpuPaddle, cpuPaddle.position, {
+        x: (cpuPaddle.position.x - puck.position.x) * cpuSpeed,
+        y: (cpuPaddle.position.y - puck.position.y) * cpuSpeed,
+      });
+    }, 1000);
+
     // cpuPaddle limits
     Events.on(engine, 'afterUpdate', function (event) {
       if (cw > ch) {
@@ -378,15 +336,15 @@ function SceneFour() {
           });
         }
       } else {
-        if (vertCpuPaddle.position.y > ch * 0.5) {
-          Body.setPosition(vertCpuPaddle, {
-            x: vertCpuPaddle.position.x,
+        if (cpuPaddle.position.y > ch * 0.5) {
+          Body.setPosition(cpuPaddle, {
+            x: cpuPaddle.position.x,
             y: ch * 0.5,
           });
         }
-        if (vertCpuPaddle.position.x < 0) {
-          Body.setPosition(vertCpuPaddle, {
-            x: vertCpuPaddle.position.x,
+        if (cpuPaddle.position.x < 0) {
+          Body.setPosition(cpuPaddle, {
+            x: cpuPaddle.position.x,
             y: 0,
           });
         }
@@ -396,31 +354,65 @@ function SceneFour() {
     // userPaddle limits
     Events.on(engine, 'afterUpdate', function (event) {
       if (cw > ch) {
-        if (userPaddle.position.x > cw * 0.5) {
+        if (userPaddle.position.x > cw - puckSize) {
           Body.setPosition(userPaddle, {
-            x: cw / 2,
+            x: cw - puckSize,
             y: userPaddle.position.y,
           });
         }
-        if (userPaddle.position.x < 0) {
+        if (userPaddle.position.x < 0 + puckSize) {
           Body.setPosition(userPaddle, {
-            x: 0,
+            x: 0 + puckSize,
             y: userPaddle.position.y,
+          });
+          Body.setVelocity(userPaddle, {
+            x: 0,
+            y: 0,
+          });
+        }
+        if (userPaddle.position.y < 0 + puckSize) {
+          Body.setPosition(userPaddle, {
+            x: userPaddle.position.x,
+            y: 0 + puckSize,
+          });
+          Body.setVelocity(userPaddle, {
+            x: 0,
+            y: 0,
+          });
+        }
+        if (userPaddle.position.y > ch - puckSize) {
+          Body.setPosition(userPaddle, {
+            x: userPaddle.position.x,
+            y: ch - puckSize,
+          });
+          Body.setVelocity(userPaddle, {
+            x: 0,
+            y: 0,
           });
         }
       } else {
-        if (vertUserPaddle.position.y < ch * 0.5) {
-          Body.setPosition(vertUserPaddle, {
-            x: vertUserPaddle.position.x,
-            y: ch * 0.5,
+        if (userPaddle.position.y < 0) {
+          Body.setPosition(userPaddle, {
+            x: userPaddle.position.x,
+            y: 0,
           });
         }
-        if (vertUserPaddle.position.y > ch) {
-          Body.setPosition(vertUserPaddle, {
-            x: vertUserPaddle.position.x,
+        if (userPaddle.position.y > ch) {
+          Body.setPosition(userPaddle, {
+            x: userPaddle.position.x,
             y: ch,
           });
         }
+      }
+    });
+
+    //limit puck speed
+    Events.on(engine, 'collisionEnd', function (event) {
+      if (Math.abs(puck.velocity.x) > 50 || Math.abs(puck.velocity.y) > 50) {
+        Body.setVelocity(puck, {
+          x: 0.75 * puck.velocity.x,
+          y: 0.75 * puck.velocity.y,
+        });
       }
     });
 

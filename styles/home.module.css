@@ -12,14 +12,17 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  margin: 0;
+  align-items: center;
+  padding-top: 30px;
 }
 
 .header h1 {
-  font-size: calc(25px + 5vw);
-  margin-top: 0px;
-  margin-left: 20px;
+  font-size: calc(10px + 5vw);
   z-index: 10;
+  color: red;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
 }
 
 .arrow {
@@ -27,15 +30,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: calc(12px + 2vw);
-  margin-top: 50vh;
+  font-size: calc(12px + 4vw);
+  margin-top: 80vh;
   animation: fadeIn 4000ms;
-  animation-delay: 10000ms;
   animation-fill-mode: forwards;
+  z-index: 10;
+  color: red;
 }
 
 .arrow button {
-  z-index: 2;
+  z-index: 100;
   background: none;
   color: inherit;
   border: none;

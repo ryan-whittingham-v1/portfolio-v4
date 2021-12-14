@@ -23,20 +23,17 @@ export default function Home({ projects }) {
 
         <section id="1">
           <header className={styles.header}>
-            <h1>
-              RYAN <br />
-              WHITTINGHAM
-            </h1>
+            <h1>RYAN WHITTINGHAM</h1>
 
-            {/* <h2 className={styles.description}>
-            <AlternatingDisplay
-              text={['Dad', 'Web Developer', 'Designer', 'Maker']}
-            />
-          </h2> */}
+            <h2 className={styles.description}>
+              <AlternatingDisplay
+                text={['Dad', 'Web Developer', 'Designer', 'Maker']}
+              />
+            </h2>
 
-            {/* <div className={styles.arrow}>
-            <button onClick={scrollToMain}>▼</button>
-          </div> */}
+            <div className={styles.arrow}>
+              <button onClick={scrollToMain}>▼</button>
+            </div>
           </header>
         </section>
         <section ref={mainRef}>
