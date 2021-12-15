@@ -31,8 +31,10 @@ export default function Typewriter(props) {
 
   return (
     <div className={style}>
-      {typedText}
-      {cursor}
+      <h1>
+        {typedText}
+        {cursor}
+      </h1>
     </div>
   );
 }

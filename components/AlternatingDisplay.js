@@ -12,7 +12,7 @@ export default function AlternatingDisplay(props) {
 
   async function updateVisibleText() {
     setActiveText(props.text[index]);
-    await sleep(2500);
+    await sleep(2000);
     setIndex((index + 1) % props.text.length);
   }
 
@@ -22,7 +22,3 @@ export default function AlternatingDisplay(props) {
 
   return <div className={styles.display}>{activeText}</div>;
 }
-
-AlternatingDisplay.propTypes = {
-  text: PropTypes.string,
-};

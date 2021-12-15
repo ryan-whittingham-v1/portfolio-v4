@@ -23,13 +23,13 @@ export default function Home({ projects }) {
 
         <section id="1">
           <header className={styles.header}>
-            <h1>RYAN WHITTINGHAM</h1>
+            <Typewriter text={'RYAN WHITTINGHAM'} />
 
-            <h2 className={styles.description}>
+            <div className={styles.description}>
               <AlternatingDisplay
-                text={['Dad', 'Web Developer', 'Designer', 'Maker']}
+                text={['Developer', 'Designer', 'Technician', 'Editor']}
               />
-            </h2>
+            </div>
 
             <div className={styles.arrow}>
               <button onClick={scrollToMain}>▼</button>

@@ -8,8 +8,8 @@
 
 .scoreboard {
   position: absolute;
-  right: 40px;
+  left: 40px;
   bottom: 15px;
-
+  color: white;
   font-size: calc(8px + 4vw);
 }
