@@ -13,33 +13,37 @@
   flex-direction: column;
   height: 100vh;
   align-items: center;
+  justify-content: center;
   background: black;
   z-index: 10;
 }
 
 .header h1 {
-  font-size: calc(10px + 5vw);
+  font-size: calc(10px + 6vw);
   z-index: 10;
-  color: white;
+  color: gold;
+
   padding: 0;
-  margin: 20px 0px 0px 0px;
+  opacity: 0;
+  margin-bottom: 0;
+  animation: fadeIn 2000ms;
+  animation-delay: 1500ms;
+  animation-fill-mode: forwards;
   pointer-events: none;
 }
 
 .arrow {
   opacity: 0;
   display: flex;
-  position: absolute;
-  right: 40px;
-  bottom: 15px;
+  margin-top: 20px;
   flex-direction: column;
   align-items: center;
   font-size: calc(12px + 4vw);
   animation: fadeIn 2000ms;
-  animation-delay: 8000ms;
+  animation-delay: 6000ms;
   animation-fill-mode: forwards;
   z-index: 10;
-  color: white;
+  color: gold;
 }
 
 .arrow button {
@@ -47,7 +51,6 @@
   background: none;
   color: inherit;
   border: none;
-  padding: 0;
   font: inherit;
   cursor: pointer;
   outline: inherit;
@@ -57,14 +60,12 @@
 
 .description {
   opacity: 0;
-  margin: 0px;
-  padding: 0px;
   animation: fadeIn 500ms;
-  animation-delay: 2500ms;
+  animation-delay: 3000ms;
   animation-fill-mode: forwards;
   font-size: calc(12px + 4vw);
   z-index: 10;
-  color: white;
+  color: gold;
 }
 
 @keyframes fadeIn {

@@ -58,7 +58,7 @@ function SceneFour() {
 
   useEffect(() => {
     const cw = document.body.clientWidth;
-    const ch = window.innerHeight;
+    const ch = window.visualViewport.height;
     const puckSize = (cw + ch) * 0.03;
     const puckMass = 2 + cw * 0.02;
     const paddleSize = (cw * 0.5 + ch) * 0.06;

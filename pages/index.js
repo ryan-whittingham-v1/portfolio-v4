@@ -4,7 +4,7 @@ import ProjectCard from '../components/ProjectCard';
 import styles from '../styles/home.module.css';
 import Typewriter from '../components/TypeWriter';
 import AlternatingDisplay from '../components/AlternatingDisplay';
-import Scene from '../components/SceneFour';
+import Scene from '../components/SceneFive';
 import { useRef } from 'react';
 
 export default function Home({ projects }) {
@@ -23,11 +23,11 @@ export default function Home({ projects }) {
 
         <section id="1">
           <header className={styles.header}>
-            <Typewriter text={'RYAN WHITTINGHAM'} />
+            <h1>RYAN WHITTINGHAM</h1>
 
             <div className={styles.description}>
               <AlternatingDisplay
-                text={['Developer', 'Designer', 'Technician', 'Editor']}
+                text={['Document', 'Design', 'Develop', 'Deliver']}
               />
             </div>
 
