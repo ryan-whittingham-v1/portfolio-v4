@@ -5,12 +5,17 @@ import styles from '../styles/home.module.css';
 import Typewriter from '../components/TypeWriter';
 import AlternatingDisplay from '../components/AlternatingDisplay';
 import Scene from '../components/SceneFive';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import * as smoothscroll from 'smoothscroll-polyfill';
 
 export default function Home({ projects }) {
   const mainRef = useRef(null);
   const scrollToMain = () =>
     mainRef.current.scrollIntoView({ behavior: 'smooth' });
+
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
 
   return (
     <div>
