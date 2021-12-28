@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  z-index: 10;
+}
+
+.header h1 {
+  font-size: calc(10px + 6vw);
+  z-index: 10;
+  color: gold;
+  padding: 0;
+  opacity: 0;
+  margin-bottom: 0;
+  animation: fadeIn 2000ms;
+  animation-delay: 1500ms;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+}
+
+.description {
+  opacity: 0;
+  animation: fadeIn 500ms;
+  animation-delay: 3000ms;
+  animation-fill-mode: forwards;
+  font-size: calc(12px + 4vw);
+  z-index: 10;
+  color: gold;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

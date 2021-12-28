@@ -1,0 +1,8 @@
+.bio {
+  height: 100vh;
+  background-color: cyan;
+}
+
+.bio h1 {
+  margin: 0px;
+}

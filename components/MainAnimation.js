@@ -37,7 +37,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function SceneFive() {
+function MainAnimation() {
   const scene = useRef();
 
   const [dimensions, setDimensions] = useState({
@@ -177,4 +177,4 @@ function SceneFive() {
   return <div ref={scene} className={styles.scene}></div>;
 }
 
-export default SceneFive;
+export default MainAnimation;
