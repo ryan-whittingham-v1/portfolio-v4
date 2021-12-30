@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
 .bio {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-  background-color: cyan;
+  z-index: 10;
+  background: greenyellow;
+  padding: 20px 0px 0px 20px;
 }
 
 .bio h1 {
-  margin: 0px;
+  margin: 0;
+  font-size: calc(10px + 6vw);
+  font-family: 'Indie Flower', cursive;
 }
