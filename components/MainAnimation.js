@@ -143,7 +143,7 @@ function MainAnimation() {
       });
       Runner.stop(render);
       Render.stop(render);
-    }, 1000);
+    }, 100);
     window.addEventListener('resize', debouncedHandleResize);
 
     // an example of using collisionStart event on an engine

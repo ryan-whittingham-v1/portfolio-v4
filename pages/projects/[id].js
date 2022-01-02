@@ -1,4 +1,4 @@
-import { fetchEntries, fetchEntry } from '../../lib/contentful';
+import { fetchEntry } from '../../lib/contentful';
 
 export default function Project({ entry }) {
   return <div>{entry.fields.title}</div>;

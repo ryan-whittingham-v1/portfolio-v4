@@ -1,11 +1,23 @@
 import PropTypes from 'prop-types';
 import styles from '../styles/typewriter.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+function debounce(fn, ms) {
+  let timer;
+  return (_) => {
+    clearTimeout(timer);
+    timer = setTimeout((_) => {
+      timer = null;
+      fn.apply(this, arguments);
+    }, ms);
+  };
+}
 
 export default function Typewriter(props) {
   const [typedText, setTypedText] = useState('');
   const [index, setIndex] = useState(0);
   const [cursor, setCursor] = useState('|');
+  const headingRef = useRef(null);
 
   let style = styles.text;
 
@@ -25,13 +37,31 @@ export default function Typewriter(props) {
     }
   }
 
+  const [scrollTop, setScrollTop] = useState(headingRef.pageYOffset);
+
   useEffect(() => {
-    updateVisibleText();
-  }, [index]);
+    // subscribe event
+    document.addEventListener('scroll', debouncedHandleOnScroll);
+    return () => {
+      // unsubscribe event
+      document.removeEventListener('scroll', debouncedHandleOnScroll);
+    };
+  }, []);
+
+  const debouncedHandleOnScroll = debounce(function handleScroll() {
+    console.log(window.scrollY);
+    setScrollTop(window.scrollY);
+  }, 500);
+
+  useEffect(() => {
+    if (scrollTop > 100) {
+      updateVisibleText();
+    }
+  }, [index, scrollTop]);
 
   return (
     <div className={style}>
-      <h1>
+      <h1 ref={headingRef}>
         {typedText}
         {cursor}
       </h1>

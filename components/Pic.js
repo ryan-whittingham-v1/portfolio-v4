@@ -16,7 +16,13 @@ export default function Pic(props) {
   });
   return (
     <div className={styles.container}>
-      <Image src={url} alt="Galaxy" layout="fill" objectFit="contain" />
+      <Image
+        src={url}
+        alt="Galaxy"
+        layout="fill"
+        objectFit="contain"
+        objectPosition="top"
+      />
     </div>
   );
 }
