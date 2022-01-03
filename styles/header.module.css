@@ -18,7 +18,7 @@
   animation: fadeIn 2000ms;
   animation-delay: 1500ms;
   animation-fill-mode: forwards;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .description {

@@ -22,7 +22,7 @@ export default function Bio(props) {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
-        <Typewriter text={'npm install bio'} />
+        <Typewriter text={'Why I Code'} />
       </div>
       <div className={styles.content}>
         <div className={styles.text}>
@@ -31,14 +31,11 @@ export default function Bio(props) {
         <div className={styles.pic}>
           <Image
             src={url}
-            alt="Galaxy"
+            alt="Ryan Whittingham"
             layout="fill"
             objectFit="contain"
             objectPosition="top"
           />
-          {/* <Pic
-            publicId={'portfolio/69dd4c4b-047e-4965-b289-e53849985bc1_2_epoybd'}
-          /> */}
         </div>
       </div>
     </div>

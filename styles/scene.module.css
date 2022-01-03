@@ -5,11 +5,3 @@
   height: 100vh;
   z-index: 1;
 }
-
-.scoreboard {
-  position: absolute;
-  left: 40px;
-  bottom: 15px;
-  color: white;
-  font-size: calc(8px + 4vw);
-}
