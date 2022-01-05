@@ -28,7 +28,7 @@ export default function Home({ projects, entry }) {
       `}</style>
       <Header targetRef={bioRef} />
       <div ref={bioRef}>
-        <Bio bio={entry} />
+        <Bio entry={entry} />
       </div>
       <div ref={projectsRef}>
         <Projects projects={projects} />
@@ -43,7 +43,7 @@ export async function getStaticProps() {
     return p.fields;
   });
 
-  const entry = await fetchEntry('5VeHKn0R9UjdxT0gKAPQh0');
+  const entry = await fetchEntry('6rE4buGYB4xCRhmUfwjnde');
 
   return {
     props: {

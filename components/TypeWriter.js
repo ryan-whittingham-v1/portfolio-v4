@@ -34,6 +34,7 @@ export default function Typewriter(props) {
     }
     if (index === props.text.length - 2) {
       setCursor('');
+      props.callback();
     }
   }
 
