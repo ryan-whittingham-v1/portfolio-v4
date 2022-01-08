@@ -17,9 +17,7 @@ export default function Header(props) {
         <h1>RYAN WHITTINGHAM</h1>
 
         <div className={styles.description}>
-          <AlternatingDisplay
-            text={['Document', 'Design', 'Develop', 'Deliver']}
-          />
+          <AlternatingDisplay text={['DESIGN', 'DEVELOP', 'DIGITAL', 'DATA']} />
         </div>
         <ScrollTo targetRef={props.targetRef} />
       </header>

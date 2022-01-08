@@ -4,9 +4,10 @@ import * as smoothscroll from 'smoothscroll-polyfill';
 import styles from '../styles/index.module.css';
 import Header from '../components/Header';
 import Bio from '../components/Bio';
+import CodingBg from '../components/CodingBg';
 import Projects from '../components/Projects';
 
-export default function Home({ projects, entry }) {
+export default function Home({ projects, bio, coding }) {
   const bioRef = useRef(null);
   const projectsRef = useRef(null);
 
@@ -28,7 +29,10 @@ export default function Home({ projects, entry }) {
       `}</style>
       <Header targetRef={bioRef} />
       <div ref={bioRef}>
-        <Bio entry={entry} />
+        <Bio entry={bio} />
+      </div>
+      <div>
+        <CodingBg entry={coding} />
       </div>
       <div ref={projectsRef}>
         <Projects projects={projects} />
@@ -43,12 +47,14 @@ export async function getStaticProps() {
     return p.fields;
   });
 
-  const entry = await fetchEntry('6rE4buGYB4xCRhmUfwjnde');
+  const bio = await fetchEntry('6rE4buGYB4xCRhmUfwjnde');
+  const coding = await fetchEntry('5VeHKn0R9UjdxT0gKAPQh0');
 
   return {
     props: {
       projects,
-      entry,
+      bio,
+      coding,
     },
   };
 }
