@@ -54,7 +54,7 @@ export default function CodingAnimation() {
 
   useEffect(() => {
     const cw = document.body.clientWidth;
-    const ch = window.outerHeight;
+    const ch = document.documentElement.clientHeight;
 
     // create renderer
     var render = Render.create({

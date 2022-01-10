@@ -16,7 +16,7 @@ export default function MatterAnimation(props) {
 
   useEffect(() => {
     const cw = document.body.clientWidth;
-    const ch = window.outerHeight;
+    const ch = document.documentElement.clientHeight;
 
     const render = Render.create({
       element: scene.current,
