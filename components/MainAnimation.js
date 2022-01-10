@@ -99,7 +99,7 @@ function MainAnimation() {
       function (x, y) {
         return Bodies.rectangle(x, y, 12, 12, {
           friction: 0.0000001,
-          frictionAir: 0.0002,
+          frictionAir: 0.0005,
           restitution: 0.5,
           density: 0.001,
           force: { x: -0.002, y: 0 },
@@ -114,7 +114,7 @@ function MainAnimation() {
     Composite.add(world, [stackRed, stackBlue]);
 
     // add mouse control
-    var mouse = Mouse.create(render.canvas),
+    /*  var mouse = Mouse.create(render.canvas),
       mouseConstraint = MouseConstraint.create(engine, {
         mouse: mouse,
         constraint: {
@@ -128,7 +128,7 @@ function MainAnimation() {
     Composite.add(world, mouseConstraint);
 
     // keep the mouse in sync with rendering
-    render.mouse = mouse;
+    render.mouse = mouse; */
 
     // Change gravity
     let gravity = engine.gravity;

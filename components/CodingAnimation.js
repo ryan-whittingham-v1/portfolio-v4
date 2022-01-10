@@ -70,7 +70,7 @@ export default function CodingAnimation() {
     Render.run(render);
 
     // add bodies
-    var jsLogo = Bodies.rectangle(0, ch - 100, 100, 100, {
+    var jsLogo = Bodies.rectangle(cw * 0.25, ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -83,9 +83,11 @@ export default function CodingAnimation() {
     });
     Composite.add(world, jsLogo);
 
-    var reactLogo = Bodies.rectangle(0, ch - 100, 200, 190, {
-      friction: 0,
-      frictionAir: 0.15,
+    var reactLogo = Bodies.rectangle(cw * 75, ch - 100, 200, 190, {
+      friction: 0.01,
+      frictionAir: 0.01,
+      mass: 2,
+      restitution: 0.1,
       render: {
         sprite: {
           texture: './images/reactLogo200190.png',
@@ -94,37 +96,36 @@ export default function CodingAnimation() {
     });
     Composite.add(world, reactLogo);
 
-    Composite.add(
-      world,
-      Bodies.rectangle(cw / 2, ch - 10, cw * 2, 20, {
-        isStatic: true,
-        render: {
-          fillStyle: '#060a19',
-        },
-      })
-    );
+    let floorLeft = Bodies.rectangle(0, ch - 10, cw, 20, {
+      isStatic: true,
+      render: {
+        fillStyle: 'black',
+      },
+    });
 
-    var counter = 0;
+    let floorRight = Bodies.rectangle(cw, ch - 10, cw, 20, {
+      isStatic: true,
+      render: {
+        fillStyle: 'black',
+      },
+    });
 
-    Events.on(runner, 'afterTick', function (event) {
-      counter += 1;
+    Composite.add(world, [floorLeft, floorRight]);
 
-      // make body move constantly
-      Body.applyForce(jsLogo, jsLogo.position, {
-        x: 0.001,
-        y: 0,
+    Events.on(engine, 'beforeUpdate', function (event) {
+      var px = 1;
+
+      // body is static so must manually update velocity for friction to work
+      Body.setVelocity(floorLeft, { x: px, y: 0 });
+      Body.setPosition(floorLeft, {
+        x: floorLeft.position.x + px,
+        y: floorLeft.position.y,
       });
-
-      Body.applyForce(reactLogo, reactLogo.position, {
-        x: 0.01,
-        y: 0,
+      Body.setVelocity(floorRight, { x: px, y: 0 });
+      Body.setPosition(floorRight, {
+        x: floorRight.position.x + px,
+        y: floorRight.position.y,
       });
-
-      // every 1.5 sec
-      if (counter >= 60 * 1.5) {
-        // reset counter
-        counter = 0;
-      }
     });
 
     // wrapping using matter-wrap plugin
@@ -136,9 +137,17 @@ export default function CodingAnimation() {
       min: { x: render.bounds.min.x, y: render.bounds.min.y },
       max: { x: render.bounds.max.x, y: render.bounds.max.y },
     };
+    floorLeft.plugin.wrap = {
+      min: { x: render.bounds.min.x, y: render.bounds.min.y },
+      max: { x: render.bounds.max.x, y: render.bounds.max.y },
+    };
+    floorRight.plugin.wrap = {
+      min: { x: render.bounds.min.x, y: render.bounds.min.y },
+      max: { x: render.bounds.max.x, y: render.bounds.max.y },
+    };
 
     // add mouse control
-    var mouse = Mouse.create(render.canvas),
+    /* var mouse = Mouse.create(render.canvas),
       mouseConstraint = MouseConstraint.create(engine, {
         mouse: mouse,
         constraint: {
@@ -149,19 +158,10 @@ export default function CodingAnimation() {
         },
       });
 
-    mouseConstraint.mouse.element.removeEventListener(
-      'mousewheel',
-      mouseConstraint.mouse.mousewheel
-    );
-    mouseConstraint.mouse.element.removeEventListener(
-      'DOMMouseScroll',
-      mouseConstraint.mouse.mousewheel
-    );
-
     Composite.add(world, mouseConstraint);
 
     // keep the mouse in sync with rendering
-    render.mouse = mouse;
+    render.mouse = mouse; */
 
     // stop animation on screen resize
     const debouncedHandleResize = debounce(function handleResize() {
