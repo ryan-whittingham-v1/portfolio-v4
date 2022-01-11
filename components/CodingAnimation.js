@@ -77,24 +77,40 @@ export default function CodingAnimation() {
       restitution: 0.1,
       render: {
         sprite: {
-          texture: './images/jsLogo100.png',
+          texture:
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_100/v1641881874/portfolio/480px-Unofficial_JavaScript_logo_2.svg_itge80.png',
         },
       },
     });
     Composite.add(world, jsLogo);
 
-    var reactLogo = Bodies.rectangle(cw * 75, ch - 100, 200, 190, {
+    var reactLogo = Bodies.rectangle(cw * 0.75, ch - 100, 125, 113, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
       restitution: 0.1,
       render: {
         sprite: {
-          texture: './images/reactLogo200190.png',
+          texture:
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_125/v1641881942/portfolio/react-logo-7B3CE81517-seeklogo.com_a5qiti.png',
         },
       },
     });
     Composite.add(world, reactLogo);
+
+    var htmlLogo = Bodies.rectangle(cw * 5, ch - 100, 167, 167, {
+      friction: 0.01,
+      frictionAir: 0.01,
+      mass: 2,
+      restitution: 0.1,
+      render: {
+        sprite: {
+          texture:
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_167/v1641882134/portfolio/HTML5_logo_and_wordmark_toczep.png',
+        },
+      },
+    });
+    Composite.add(world, htmlLogo);
 
     let floorLeft = Bodies.rectangle(0, ch - 10, cw, 20, {
       isStatic: true,
@@ -142,6 +158,10 @@ export default function CodingAnimation() {
       max: { x: render.bounds.max.x, y: render.bounds.max.y },
     };
     floorRight.plugin.wrap = {
+      min: { x: render.bounds.min.x, y: render.bounds.min.y },
+      max: { x: render.bounds.max.x, y: render.bounds.max.y },
+    };
+    htmlLogo.plugin.wrap = {
       min: { x: render.bounds.min.x, y: render.bounds.min.y },
       max: { x: render.bounds.max.x, y: render.bounds.max.y },
     };
