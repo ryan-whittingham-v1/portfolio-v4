@@ -137,13 +137,16 @@ function MainAnimation() {
 
     // stop animation on screen resize
     const debouncedHandleResize = debounce(function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-      Runner.stop(render);
-      Render.stop(render);
+      if (cw !== document.body.clientWidth) {
+        setDimensions({
+          //height: window.innerHeight,
+          width: document.body.clientWidth,
+        });
+        Runner.stop(render);
+        Render.stop(render);
+      }
     }, 100);
+
     window.addEventListener('resize', debouncedHandleResize);
 
     // an example of using collisionStart event on an engine

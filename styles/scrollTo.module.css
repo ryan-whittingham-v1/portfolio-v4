@@ -5,7 +5,6 @@
   align-items: center;
   font-size: calc(12px + 4vw);
   animation: fadeIn 2000ms;
-  animation-delay: 7000ms;
   animation-fill-mode: forwards;
   z-index: 10;
   color: gold;

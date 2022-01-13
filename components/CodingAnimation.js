@@ -54,7 +54,7 @@ export default function CodingAnimation() {
 
   useEffect(() => {
     const cw = document.body.clientWidth;
-    const ch = document.documentElement.clientHeight;
+    const ch = document.documentElement.clientHeight * 0.3;
 
     // create renderer
     var render = Render.create({
@@ -84,7 +84,7 @@ export default function CodingAnimation() {
     });
     Composite.add(world, jsLogo);
 
-    var reactLogo = Bodies.rectangle(cw * 0.75, ch - 100, 125, 113, {
+    var reactLogo = Bodies.rectangle(cw * 0.75, ch - 100, 100, 90, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -92,13 +92,13 @@ export default function CodingAnimation() {
       render: {
         sprite: {
           texture:
-            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_125/v1641881942/portfolio/react-logo-7B3CE81517-seeklogo.com_a5qiti.png',
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_100/v1641881942/portfolio/react-logo-7B3CE81517-seeklogo.com_a5qiti.png',
         },
       },
     });
     Composite.add(world, reactLogo);
 
-    var htmlLogo = Bodies.rectangle(cw * 5, ch - 100, 167, 167, {
+    var htmlLogo = Bodies.rectangle(cw * 5, ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -106,23 +106,37 @@ export default function CodingAnimation() {
       render: {
         sprite: {
           texture:
-            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_167/v1641882134/portfolio/HTML5_logo_and_wordmark_toczep.png',
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_100/v1641882134/portfolio/HTML5_logo_and_wordmark_toczep.png',
         },
       },
     });
     Composite.add(world, htmlLogo);
 
-    let floorLeft = Bodies.rectangle(0, ch - 10, cw, 20, {
+    var cssLogo = Bodies.rectangle(cw * 0.5, ch - 100, 72, 102, {
+      friction: 0.01,
+      frictionAir: 0.01,
+      mass: 2,
+      restitution: 0.1,
+      render: {
+        sprite: {
+          texture:
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_72/v1641882014/portfolio/544px-CSS3_logo_and_wordmark.svg_i7qt8k.png',
+        },
+      },
+    });
+    Composite.add(world, cssLogo);
+
+    let floorLeft = Bodies.rectangle(0, ch - 10, cw, 5, {
       isStatic: true,
       render: {
-        fillStyle: 'black',
+        fillStyle: 'none',
       },
     });
 
-    let floorRight = Bodies.rectangle(cw, ch - 10, cw, 20, {
+    let floorRight = Bodies.rectangle(cw, ch - 10, cw, 5, {
       isStatic: true,
       render: {
-        fillStyle: 'black',
+        fillStyle: 'none',
       },
     });
 
@@ -165,6 +179,10 @@ export default function CodingAnimation() {
       min: { x: render.bounds.min.x, y: render.bounds.min.y },
       max: { x: render.bounds.max.x, y: render.bounds.max.y },
     };
+    cssLogo.plugin.wrap = {
+      min: { x: render.bounds.min.x, y: render.bounds.min.y },
+      max: { x: render.bounds.max.x, y: render.bounds.max.y },
+    };
 
     // add mouse control
     /* var mouse = Mouse.create(render.canvas),
@@ -185,12 +203,14 @@ export default function CodingAnimation() {
 
     // stop animation on screen resize
     const debouncedHandleResize = debounce(function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-      Runner.stop(render);
-      Render.stop(render);
+      if (cw !== document.body.clientWidth) {
+        setDimensions({
+          //height: window.innerHeight,
+          width: document.body.clientWidth,
+        });
+        Runner.stop(render);
+        Render.stop(render);
+      }
     }, 100);
     window.addEventListener('resize', debouncedHandleResize);
 

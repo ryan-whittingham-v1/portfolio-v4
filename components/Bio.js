@@ -6,7 +6,7 @@ import Pic from '../components/Pic';
 import Typewriter from '../components/TypeWriter';
 
 export default function Bio(props) {
-  const [visible, setVisibility] = useState(false);
+  const [visible, setVisibility] = useState(true);
 
   const url = buildUrl(
     'portfolio/69dd4c4b-047e-4965-b289-e53849985bc1_2_epoybd.png',
@@ -31,7 +31,8 @@ export default function Bio(props) {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
-        <Typewriter text={props.entry.fields.title} callback={showContent} />
+        {/* <Typewriter text={props.entry.fields.title} callback={showContent} /> */}
+        <h1>{props.entry.fields.title}</h1>
       </div>
       {visible && (
         <div className={styles.content}>
@@ -45,6 +46,7 @@ export default function Bio(props) {
                 alt="Ryan Whittingham"
                 layout="fill"
                 objectFit="contain"
+                priority
               />
             </div>
           </div>

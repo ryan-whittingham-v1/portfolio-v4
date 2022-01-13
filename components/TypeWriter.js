@@ -28,13 +28,15 @@ export default function Typewriter(props) {
   async function updateVisibleText() {
     if (index <= props.text.length) {
       setTypedText(`${typedText + props.text.charAt(index)}`);
-
       await sleep(120);
       setIndex(index + 1);
-    }
-    if (index === props.text.length - 2) {
-      setCursor('');
-      props.callback();
+
+      if (index === props.text.length - 2) {
+        setCursor('');
+        if (props.callback) {
+          props.callback();
+        }
+      }
     }
   }
 
@@ -50,7 +52,6 @@ export default function Typewriter(props) {
   }, []);
 
   const debouncedHandleOnScroll = debounce(function handleScroll() {
-    console.log(window.scrollY);
     setScrollTop(window.scrollY);
   }, 500);
 
