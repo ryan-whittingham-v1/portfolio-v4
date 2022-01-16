@@ -1,8 +1,10 @@
+import styles from '../styles/projectCard.module.css';
+
 function Project({ date, image, title }) {
   /*   let { file, description } = image;
    */
   return (
-    <div>
+    <div className={styles.container}>
       {/* <img alt={description} src={`https:${file.url}`} /> */}
       {/* <div>{description}</div> */}
       <div>

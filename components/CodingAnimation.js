@@ -70,7 +70,7 @@ export default function CodingAnimation() {
     Render.run(render);
 
     // add bodies
-    var jsLogo = Bodies.rectangle(cw * 0.25, ch - 100, 100, 100, {
+    var jsLogo = Bodies.rectangle((cw * 1) / 5, ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -84,7 +84,7 @@ export default function CodingAnimation() {
     });
     Composite.add(world, jsLogo);
 
-    var reactLogo = Bodies.rectangle(cw * 0.75, ch - 100, 100, 90, {
+    var reactLogo = Bodies.rectangle((cw * 2) / 5, ch - 100, 100, 90, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -98,7 +98,7 @@ export default function CodingAnimation() {
     });
     Composite.add(world, reactLogo);
 
-    var htmlLogo = Bodies.rectangle(cw * 5, ch - 100, 100, 100, {
+    var htmlLogo = Bodies.rectangle((cw * 3) / 5, ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -106,13 +106,13 @@ export default function CodingAnimation() {
       render: {
         sprite: {
           texture:
-            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_100/v1641882134/portfolio/HTML5_logo_and_wordmark_toczep.png',
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_100/v1642309046/portfolio/5847f5bdcef1014c0b5e489c_oxa5ab.png',
         },
       },
     });
     Composite.add(world, htmlLogo);
 
-    var cssLogo = Bodies.rectangle(cw * 0.5, ch - 100, 72, 102, {
+    var vscLogo = Bodies.rectangle((cw * 4) / 5, ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -120,7 +120,21 @@ export default function CodingAnimation() {
       render: {
         sprite: {
           texture:
-            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_72/v1641882014/portfolio/544px-CSS3_logo_and_wordmark.svg_i7qt8k.png',
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_100/v1641882114/portfolio/800px-Visual_Studio_Code_1.35_icon.svg_xrhosf.png',
+        },
+      },
+    });
+    Composite.add(world, vscLogo);
+
+    var cssLogo = Bodies.rectangle((cw * 5) / 5, ch - 100, 100, 100, {
+      friction: 0.01,
+      frictionAir: 0.01,
+      mass: 2,
+      restitution: 0.1,
+      render: {
+        sprite: {
+          texture:
+            'https://res.cloudinary.com/whittingham-io/image/upload/c_scale,w_100/v1642309166/portfolio/css3-logo-svg-vector_gzn7hs.png',
         },
       },
     });
@@ -159,14 +173,6 @@ export default function CodingAnimation() {
     });
 
     // wrapping using matter-wrap plugin
-    jsLogo.plugin.wrap = {
-      min: { x: render.bounds.min.x, y: render.bounds.min.y },
-      max: { x: render.bounds.max.x, y: render.bounds.max.y },
-    };
-    reactLogo.plugin.wrap = {
-      min: { x: render.bounds.min.x, y: render.bounds.min.y },
-      max: { x: render.bounds.max.x, y: render.bounds.max.y },
-    };
     floorLeft.plugin.wrap = {
       min: { x: render.bounds.min.x, y: render.bounds.min.y },
       max: { x: render.bounds.max.x, y: render.bounds.max.y },
@@ -180,6 +186,18 @@ export default function CodingAnimation() {
       max: { x: render.bounds.max.x, y: render.bounds.max.y },
     };
     cssLogo.plugin.wrap = {
+      min: { x: render.bounds.min.x, y: render.bounds.min.y },
+      max: { x: render.bounds.max.x, y: render.bounds.max.y },
+    };
+    jsLogo.plugin.wrap = {
+      min: { x: render.bounds.min.x, y: render.bounds.min.y },
+      max: { x: render.bounds.max.x, y: render.bounds.max.y },
+    };
+    reactLogo.plugin.wrap = {
+      min: { x: render.bounds.min.x, y: render.bounds.min.y },
+      max: { x: render.bounds.max.x, y: render.bounds.max.y },
+    };
+    vscLogo.plugin.wrap = {
       min: { x: render.bounds.min.x, y: render.bounds.min.y },
       max: { x: render.bounds.max.x, y: render.bounds.max.y },
     };

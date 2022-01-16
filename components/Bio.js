@@ -8,21 +8,18 @@ import Typewriter from '../components/TypeWriter';
 export default function Bio(props) {
   const [visible, setVisibility] = useState(true);
 
-  const url = buildUrl(
-    'portfolio/69dd4c4b-047e-4965-b289-e53849985bc1_2_epoybd.png',
-    {
-      cloud: {
-        cloudName: 'whittingham-io',
+  const url = buildUrl('portfolio/ryanWhit-profile_y6lbfj.jpg', {
+    cloud: {
+      cloudName: 'whittingham-io',
+    },
+    transformations: {
+      effect: {
+        quality: 1,
       },
-      transformations: {
-        effect: {
-          quality: 1,
-        },
-        radius: '50',
-        background: 'none',
-      },
-    }
-  );
+      radius: '50',
+      background: 'none',
+    },
+  });
 
   function showContent() {
     setVisibility(!visible);
@@ -32,7 +29,7 @@ export default function Bio(props) {
     <div className={styles.container}>
       <div className={styles.heading}>
         {/* <Typewriter text={props.entry.fields.title} callback={showContent} /> */}
-        <h1>{props.entry.fields.title}</h1>
+        <h1>{props.entry.fields.title.toUpperCase()}</h1>
       </div>
       {visible && (
         <div className={styles.content}>

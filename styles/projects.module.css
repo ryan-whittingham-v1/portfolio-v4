@@ -1,3 +1,22 @@
-.projects {
+.container {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+  background: #ffd900;
+  color: rgb(41, 41, 41);
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  font-size: calc(6px + 2vw);
+}
+
+.heading h1 {
+  padding: 0px;
+}
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

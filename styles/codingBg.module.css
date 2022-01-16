@@ -25,7 +25,7 @@
 .text {
   flex: 1 70%;
   display: flex;
-  font-size: calc((2vw + 4vh) / 2);
+  font-size: calc((1.7vw + 4vh) / 2);
 }
 
 .text p {

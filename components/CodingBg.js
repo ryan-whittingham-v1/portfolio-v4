@@ -24,7 +24,7 @@ export default function CodingBg(props) {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
-        <h1>{props.entry.fields.title} </h1>
+        <h1>{props.entry.fields.title.toUpperCase()} </h1>
       </div>
 
       <div className={styles.text}>
