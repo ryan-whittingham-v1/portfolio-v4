@@ -9,14 +9,7 @@ export default function Projects(props) {
       </div>
       <div className={styles.projects}>
         {props.projects.map((p) => {
-          return (
-            <ProjectCard
-              key={p.date}
-              date={p.date}
-              image={p?.image?.fields}
-              title={p.title}
-            />
-          );
+          return <ProjectCard project={p} />;
         })}
       </div>
     </div>

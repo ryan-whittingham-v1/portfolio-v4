@@ -8,6 +8,7 @@ export default function Project({ entry }) {
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const entries = await fetchEntries();
+
   // Get the paths we want to pre-render based on posts
   const paths = entries.map((entry) => ({
     params: { id: entry.sys.id },
