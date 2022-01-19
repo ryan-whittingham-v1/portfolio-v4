@@ -3,8 +3,8 @@ import Image from 'next/image';
 import styles from '../styles/projectCard.module.css';
 
 function Project(props) {
-  let { title, type, image } = props.project;
-  let { file, description } = image.fields;
+  let { title, type, coverPhoto } = props.project;
+  let { file, description } = coverPhoto.fields;
   return (
     <div className={styles.container}>
       <div className={styles.pic}>
@@ -12,13 +12,15 @@ function Project(props) {
           src={`https:${file.url}`}
           alt={description}
           layout="fill"
-          objectFit="cover"
+          objectFit="contain"
           priority
         />
       </div>
-      <h2>{title}</h2>
-      <p>{type}</p>
-      {/* <h3>{date.substring(0, 10)}</h3> */}
+      <div className={styles.title}>
+        <h2>{title}</h2>
+        <p>{type}</p>
+        {/* <h3>{date.substring(0, 10)}</h3> */}
+      </div>
     </div>
   );
 }

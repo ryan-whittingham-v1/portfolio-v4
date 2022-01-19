@@ -44,7 +44,7 @@ export default function Home({ projects, bio, coding }) {
 export async function getStaticProps() {
   const projectRes = await fetchProjects();
   const projects = await projectRes.map((p) => {
-    return p.fields;
+    return p;
   });
 
   const bio = await fetchEntry('6rE4buGYB4xCRhmUfwjnde');

@@ -13,6 +13,10 @@
   justify-content: center;
 }
 
+.heading h1 {
+  margin-bottom: 0;
+}
+
 .content {
   flex: 1;
   display: flex;

@@ -5,6 +5,7 @@
   height: 100vh;
   background: rgb(255, 146, 197);
   color: rgb(41, 41, 41);
+  justify-content: space-evenly;
 }
 
 .heading {
@@ -15,6 +16,7 @@
 
 .heading h1 {
   padding: 0px;
+  margin-bottom: 10px;
 }
 .content {
   flex: 1;
@@ -23,17 +25,12 @@
 }
 
 .text {
-  flex: 1 70%;
   display: flex;
-  font-size: calc((1.7vw + 4vh) / 2);
+  font-size: calc((1.7vw + 4.3vh) / 2);
 }
 
 .text p {
   margin: 0px 20px 10px 20px;
-}
-
-.animation {
-  flex: 1 10%;
 }
 
 @keyframes fadeIn {

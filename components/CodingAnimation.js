@@ -54,7 +54,10 @@ export default function CodingAnimation() {
 
   useEffect(() => {
     const cw = document.body.clientWidth;
-    const ch = document.documentElement.clientHeight * 0.3;
+    const ch =
+      (document.documentElement.clientHeight * 0.1 +
+        0.1 * document.body.clientWidth) /
+      1;
 
     // create renderer
     var render = Render.create({
@@ -70,7 +73,7 @@ export default function CodingAnimation() {
     Render.run(render);
 
     // add bodies
-    var jsLogo = Bodies.rectangle((cw * 1) / 5, ch - 100, 100, 100, {
+    var jsLogo = Bodies.rectangle(-50, ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -84,7 +87,7 @@ export default function CodingAnimation() {
     });
     Composite.add(world, jsLogo);
 
-    var reactLogo = Bodies.rectangle((cw * 2) / 5, ch - 100, 100, 90, {
+    var reactLogo = Bodies.rectangle(cw * (1 / 5), ch - 100, 100, 90, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -98,7 +101,7 @@ export default function CodingAnimation() {
     });
     Composite.add(world, reactLogo);
 
-    var htmlLogo = Bodies.rectangle((cw * 3) / 5, ch - 100, 100, 100, {
+    var htmlLogo = Bodies.rectangle(cw * (2 / 5), ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -112,7 +115,7 @@ export default function CodingAnimation() {
     });
     Composite.add(world, htmlLogo);
 
-    var vscLogo = Bodies.rectangle((cw * 4) / 5, ch - 100, 100, 100, {
+    var vscLogo = Bodies.rectangle(cw * (3 / 5), ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,
@@ -126,7 +129,7 @@ export default function CodingAnimation() {
     });
     Composite.add(world, vscLogo);
 
-    var cssLogo = Bodies.rectangle((cw * 5) / 5, ch - 100, 100, 100, {
+    var cssLogo = Bodies.rectangle(cw * (4 / 5), ch - 100, 100, 100, {
       friction: 0.01,
       frictionAir: 0.01,
       mass: 2,

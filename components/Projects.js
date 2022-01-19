@@ -9,7 +9,7 @@ export default function Projects(props) {
       </div>
       <div className={styles.projects}>
         {props.projects.map((p) => {
-          return <ProjectCard project={p} />;
+          return <ProjectCard project={p.fields} key={p.sys.id} />;
         })}
       </div>
     </div>

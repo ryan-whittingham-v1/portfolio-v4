@@ -1,13 +1,30 @@
 .container {
-  width: 220px;
-  height: 220px;
+  width: 275px;
+  height: 38vh;
   background: white;
   border-radius: 10px;
   margin: 10px 2vw 2vw 0px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .pic {
+  flex: 1 50%;
   position: relative;
-  height: 100px;
+}
+
+.title {
+  text-align: center;
+}
+
+.title p {
+  margin: 0;
+  padding: 0;
+}
+
+.title h2 {
+  margin: 0;
+  padding: 0;
 }
