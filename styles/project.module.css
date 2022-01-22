@@ -1,0 +1,86 @@
+.container {
+  position: fixed;
+  backdrop-filter: blur(1px);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: flex;
+  font-size: 1rem;
+}
+
+.container p {
+  margin: 10px;
+  padding: 0px;
+}
+
+.about a {
+  font-size: 2rem;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.stack a {
+  text-decoration: none;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.modal {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 75vw;
+  background-color: #fefefe;
+  padding: 20px;
+  font-size: 0.9em;
+  color: maroon;
+  border-radius: 10px;
+  z-index: 101;
+}
+
+.modal h2 {
+  margin-top: 0px;
+}
+
+.pic {
+  width: 70vw;
+  height: 30vh;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about {
+  flex: 1 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stack {
+  flex: 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(175, 175, 175);
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.stack h4 {
+  margin: 10px 0px;
+  padding: 0px;
+}
+
+.stack ul {
+  margin: 0px;
+  padding: 0px 20px;
+}
