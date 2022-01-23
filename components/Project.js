@@ -19,9 +19,16 @@ export default function Project(props) {
   return (
     <div className={styles.container} onClick={hideContent}>
       <div className={styles.modal} onClick={preventHide}>
-        <h2>{title}</h2>
+        <div className={styles.header}>
+          <div className={styles.title}>
+            <h2>{title}</h2>
+          </div>
+          <button className={styles.close} type="button" onClick={hideContent}>
+            X
+          </button>
+        </div>
         {/* <h3>{type}</h3> */}
-        <div className={styles.pic}>
+        {/* <div className={styles.pic}>
           <Image
             src={`https:${file.url}`}
             alt={description}
@@ -30,15 +37,24 @@ export default function Project(props) {
             objectPosition="50% 5%"
             priority
           />
-        </div>
+        </div> */}
 
         {/* <p>{date.substring(0, 10)}</p> */}
         <div className={styles.main}>
           <div className={styles.about}>
             <p>{about}</p>
-            <a href={url} target="_blank">
-              Live Demo
-            </a>
+            <div className={styles.links}>
+              <div className={styles.demo}>
+                <a href={url} target="_blank">
+                  Live Demo
+                </a>
+              </div>
+              <div className={styles.repo}>
+                <a href={repo} target="_blank">
+                  Github Repo
+                </a>{' '}
+              </div>
+            </div>
           </div>
           <div className={styles.stack}>
             <h4>TECH STACK</h4>
@@ -47,9 +63,6 @@ export default function Project(props) {
                 return <li key={index}>{tech}</li>;
               })}
             </ul>
-            <a href={repo} target="_blank">
-              Github Repo
-            </a>
           </div>
         </div>
       </div>

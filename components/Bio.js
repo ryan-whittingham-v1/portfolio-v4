@@ -27,28 +27,26 @@ export default function Bio(props) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.heading}>
-        {/* <Typewriter text={props.entry.fields.title} callback={showContent} /> */}
-        <h1>{props.entry.fields.title.toUpperCase()}</h1>
-      </div>
-      {visible && (
-        <div className={styles.content}>
-          <div className={styles.text}>
-            <p>{props.entry.fields.content}</p>
-          </div>
-          <div className={styles.picContainer}>
-            <div className={styles.pic}>
-              <Image
-                src={url}
-                alt="Ryan Whittingham"
-                layout="fill"
-                objectFit="contain"
-                priority
-              />
-            </div>
-          </div>
+      <div className={styles.left}>
+        <div className={styles.heading}>
+          {/* <Typewriter text={props.entry.fields.title} callback={showContent} /> */}
+          <h1>{props.entry.fields.title.toUpperCase()}</h1>
         </div>
-      )}
+        <div className={styles.text}>
+          <p>{props.entry.fields.content}</p>
+        </div>
+      </div>
+      <div className={styles.right}>
+        <div className={styles.pic}>
+          <Image
+            src={url}
+            alt="Ryan Whittingham"
+            layout="fill"
+            objectFit="contain"
+            priority
+          />
+        </div>
+      </div>
     </div>
   );
 }

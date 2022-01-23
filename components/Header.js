@@ -33,7 +33,7 @@ export default function Header(props) {
         {visible && (
           <div className={styles.description}>
             <AlternatingDisplay
-              text={['DESIGN', 'DEVELOP', 'DIGITAL', 'DATA']}
+              text={['DEVELOP', 'DIGITAL', 'DATA', 'DESIGN']}
             />
           </div>
         )}
