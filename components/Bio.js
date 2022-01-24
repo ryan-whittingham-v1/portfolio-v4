@@ -8,7 +8,7 @@ import Typewriter from '../components/TypeWriter';
 export default function Bio(props) {
   const [visible, setVisibility] = useState(true);
 
-  const url = buildUrl('portfolio/ryanWhit-profile_y6lbfj.jpg', {
+  const url = buildUrl('portfolio/2020-09-02_02-02-14_490_2_na6xkg.jpg', {
     cloud: {
       cloudName: 'whittingham-io',
     },
