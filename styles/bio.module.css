@@ -8,7 +8,7 @@
 }
 
 .left {
-  flex: 1 60%;
+  flex: 1 100%;
   display: flex;
   flex-flow: row wrap;
   min-width: 300px;
@@ -31,22 +31,30 @@
   padding: 0px 30px;
 }
 
+.text p {
+  padding: 0px;
+  margin: 0px;
+}
+
 .right {
-  flex: 1 40%;
+  flex: 1 100%;
   display: flex;
   align-items: center;
 }
 
 .pic {
-  flex: 1 50%;
-  height: 35vh;
+  flex: 1 100%;
+  height: calc((40vw + 50vh) / 2);
   position: relative;
   filter: drop-shadow(10px 10px 4px #303033);
 }
 
-@media all and (min-width: 500px) {
-  .pic {
-    height: 90vh;
+@media all and (min-width: 800px) {
+  .left {
+    flex: 1 65%;
+  }
+  .right {
+    flex: 1 35%;
   }
 }
 

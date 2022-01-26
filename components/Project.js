@@ -44,11 +44,11 @@ export default function Project(props) {
           <div className={styles.about}>
             <p>{about}</p>
             <div className={styles.links}>
-              <div className={styles.demo}>
+              {/* <div className={styles.demo}>
                 <a href={url} target="_blank">
                   Live Demo
                 </a>
-              </div>
+              </div> */}
               <div className={styles.repo}>
                 <a href={repo} target="_blank">
                   Github Repo
