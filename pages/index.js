@@ -7,7 +7,7 @@ import Bio from '../components/Bio';
 import CodingBg from '../components/CodingBg';
 import Projects from '../components/Projects';
 
-export default function Home({ projects, bio, coding }) {
+export default function Home({ projects, bio, coding, tools }) {
   const bioRef = useRef(null);
   const projectsRef = useRef(null);
 
@@ -32,7 +32,7 @@ export default function Home({ projects, bio, coding }) {
         <Bio entry={bio} />
       </div>
       <div>
-        <CodingBg entry={coding} />
+        <CodingBg entry={tools} />
       </div>
       <div ref={projectsRef}>
         <Projects projects={projects} />
@@ -49,12 +49,14 @@ export async function getStaticProps() {
 
   const bio = await fetchEntry('6rE4buGYB4xCRhmUfwjnde');
   const coding = await fetchEntry('5VeHKn0R9UjdxT0gKAPQh0');
+  const tools = await fetchEntry('7ujOdgL5TF1N96LMEMyaUL');
 
   return {
     props: {
       projects,
       bio,
       coding,
+      tools,
     },
   };
 }
