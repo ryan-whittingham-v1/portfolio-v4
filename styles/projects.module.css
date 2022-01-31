@@ -1,23 +1,27 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   height: 100vh;
   background: #ffd900;
   color: rgb(41, 41, 41);
 }
 
 .heading {
-  display: flex;
-  justify-content: center;
-  font-size: calc(6px + 2vw);
+  flex: 1 100%;
+  text-align: center;
 }
 
 .heading h1 {
+  font-size: calc(4vw + 4vh / 2);
+  margin: 20px 0px 0px 0px;
   padding: 0px;
-  margin-bottom: 10px;
 }
 .projects {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 auto;
   justify-content: center;
+}
+
+@media all and (orientation: landscape) {
 }

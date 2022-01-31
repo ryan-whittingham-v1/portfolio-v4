@@ -38,6 +38,7 @@ export default function Bio(props) {
             alt="Ryan Whittingham"
             layout="fill"
             objectFit="contain"
+            objectPosition="top"
             priority
           />
         </div>
