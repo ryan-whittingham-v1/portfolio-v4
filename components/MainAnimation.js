@@ -71,45 +71,37 @@ function MainAnimation() {
 
     // add bodies
     var stackRed = Composites.pyramid(
-      -200,
-      ch * 0.5,
-      30,
-      30,
+      0,
+      ch / 2,
+      20,
+      20,
       10,
       10,
       function (x, y) {
-        return Bodies.rectangle(x, y, 10, 10, {
+        return Bodies.rectangle(x, y, 15, 15, {
           friction: 0.0000002,
           frictionAir: 0.0005,
           restitution: 0.5,
           density: 0.001,
-          force: { x: 0.002, y: 0 },
+          force: { x: 0.005, y: 0 },
           render: { fillStyle: 'grey', opacity: 1 },
         });
       }
     );
 
-    var stackBlue = Composites.pyramid(
-      cw,
-      ch * 0.5,
-      30,
-      30,
-      10,
-      10,
-      function (x, y) {
-        return Bodies.rectangle(x, y, 12, 12, {
-          friction: 0.0000001,
-          frictionAir: 0.0005,
-          restitution: 0.5,
-          density: 0.001,
-          force: { x: -0.002, y: 0 },
-          render: { fillStyle: 'ltblack', opacity: 1 },
-        });
-      }
-    );
+    var stackBlue = Composites.pyramid(cw, ch, 20, 20, 10, 10, function (x, y) {
+      return Bodies.rectangle(x, y, 25, 25, {
+        friction: 0.0000001,
+        frictionAir: 0.0005,
+        restitution: 0.5,
+        density: 0.001,
+        force: { x: -0.0095, y: 0 },
+        render: { fillStyle: 'grey', opacity: 1 },
+      });
+    });
 
-    Composite.rotate(stackRed, Math.PI * 2.5, { x: 0, y: 200 });
-    Composite.rotate(stackBlue, Math.PI * -2.5, { x: cw, y: 500 });
+    Composite.rotate(stackRed, Math.PI * 2.5, { x: 0, y: 0 });
+    Composite.rotate(stackBlue, Math.PI * -2.5, { x: cw, y: ch * 1.1 });
 
     Composite.add(world, [stackRed, stackBlue]);
 

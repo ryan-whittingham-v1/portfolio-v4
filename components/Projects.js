@@ -3,15 +3,15 @@ import ProjectCard from './ProjectCard';
 
 export default function Projects(props) {
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.heading}>
-        <h1>PROJECTS 📁</h1>
+        <h1>PROJECTS</h1>
       </div>
       <div className={styles.projects}>
         {props.projects.map((p) => {
           return <ProjectCard project={p.fields} key={p.sys.id} />;
         })}
       </div>
-    </div>
+    </section>
   );
 }

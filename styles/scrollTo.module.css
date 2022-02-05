@@ -18,7 +18,6 @@
   border: none;
   font: inherit;
   cursor: pointer;
-  outline: inherit;
   animation: bounce 1s infinite;
   animation-direction: alternate;
 }

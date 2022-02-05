@@ -17,7 +17,7 @@ export default function Project(props) {
   };
 
   return (
-    <div className={styles.container} onClick={hideContent}>
+    <article className={styles.container} onClick={hideContent}>
       <div className={styles.modal} onClick={preventHide}>
         <div className={styles.header}>
           <div className={styles.title}>
@@ -66,6 +66,6 @@ export default function Project(props) {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
