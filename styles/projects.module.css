@@ -1,9 +1,10 @@
 .container {
   display: flex;
   flex-flow: row wrap;
-  height: 100vh;
+  min-height: 100vh;
   background: #ffd900;
   color: rgb(41, 41, 41);
+  padding-bottom: 10px;
 }
 
 .heading {

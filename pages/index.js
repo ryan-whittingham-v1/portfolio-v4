@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Bio from '../components/Bio';
 import CodingBg from '../components/CodingBg';
 import Projects from '../components/Projects';
+import WhyCode from '../components/WhyCode';
 
 export default function Home({ projects, bio, coding, tools }) {
   const bioRef = useRef(null);
@@ -36,6 +37,9 @@ export default function Home({ projects, bio, coding, tools }) {
       </div>
       <div ref={projectsRef}>
         <Projects projects={projects} />
+      </div>
+      <div>
+        <WhyCode entry={coding} />
       </div>
     </div>
   );

@@ -56,7 +56,8 @@ export default function Typewriter(props) {
   }, 500);
 
   useEffect(() => {
-    if (scrollTop > 100) {
+    console.log(scrollTop);
+    if (scrollTop > document.body.clientHeight - 1.75 * window.innerHeight) {
       updateVisibleText();
     }
   }, [index, scrollTop]);

@@ -8,6 +8,7 @@
   justify-content: center;
   flex-flow: row wrap;
   margin: 10px;
+  cursor: pointer;
 }
 
 .pic {
