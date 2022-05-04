@@ -27,9 +27,8 @@ export default function Typewriter(props) {
 
   async function updateVisibleText() {
     if (index <= props.text.length) {
-      setTypedText(`${typedText + props.text.charAt(index)}`);
       await sleep(120);
-      setIndex(index + 1);
+      setTypedText(`${typedText + props.text.charAt(index)}`);
 
       if (index === props.text.length - 2) {
         setCursor('');
@@ -56,11 +55,16 @@ export default function Typewriter(props) {
   }, 500);
 
   useEffect(() => {
-    console.log(scrollTop);
     if (scrollTop > document.body.clientHeight - 1.75 * window.innerHeight) {
       updateVisibleText();
     }
   }, [index, scrollTop]);
+
+  useEffect(() => {
+    if (typedText) {
+      setIndex(index + 1);
+    }
+  }, [typedText]);
 
   return (
     <div className={style}>
